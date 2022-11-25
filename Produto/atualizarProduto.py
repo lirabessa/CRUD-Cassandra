@@ -10,3 +10,5 @@ def atualizarProduto (session) :
     novaDesProd = input(str ('Qual a nova descrição do produto? '))
 
     session.execute("update produto set nomeProd = %s, preco =%s, descProd =%s where codProd= %s",[novoNomeProd,novoPreco,novaDesProd,codProd])
+
+    print('Atualizado com sucesso')

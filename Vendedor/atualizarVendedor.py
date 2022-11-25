@@ -10,3 +10,5 @@ def atualizarVendedor (session):
     novoTelefone = input(str ('Qual novo telefone Vendedor? '))
     
     session.execute("update vendedor set  nome = %s, email  =%s, telefone  =%s where cpf= %s",[novoNome,novoEmail,novoTelefone,cpf])
+
+    print('Atualizado com sucesso')

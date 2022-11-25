@@ -10,3 +10,4 @@ def atualizarUsuario (session) :
     
     session.execute("update usuario set  nome = %s, email  = %s, telefone  =%s where cpf= %s",[novoNome,novoEmail,novoTelefone,cpf])
 
+    print('Atualizado com sucesso')
