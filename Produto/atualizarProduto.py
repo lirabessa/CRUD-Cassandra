@@ -1,22 +1,12 @@
-from bson.objectid import ObjectId
 import Produto.buscarProduto as buscarProduto
 
 def atualizarProduto (session) :
-    minhaColuna = session.produtos
     
-    buscarProduto.procurarTodes(session)
-    id = input(str('Qual o ID do produto você quer atualizar? '))
-    nome = input (str('Qual nome do produto? '))
-    qtde =input(str ('Qual quantidade do produto? '))
+    buscarProduto.procurarTodesProduto(session)
 
-    meuDicionario = { "$set":  {
-       "nomeProdutos": [
-        {
-        "nome": nome,
-        "qtde": qtde          
-    },]}}
+    codProd = input(str('Qual o cod do produto você quer atualizar? '))
+    novoNomeProd = input (str('Qual novo nome do produto? '))
+    novoPreco = input(str ('Qual novo preco do produto? '))
+    novaDesProd = input(str ('Qual a nova descrição do produto? '))
 
-    minhaColuna.update_one({'_id':ObjectId(id)}, meuDicionario)
-
-    for x in minhaColuna.find():
-        print(x)
+    session.execute("update produto set nomeProd = %s, preco =%s, descProd =%s where codProd= %s",[novoNomeProd,novoPreco,novaDesProd,codProd])

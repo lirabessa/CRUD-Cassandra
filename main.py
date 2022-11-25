@@ -66,7 +66,6 @@ if row:
                 print('''  
                     1 - Cadastrar Produto \n 
                     2 - Atualizar Produto \n
-                    3 - Buscar Produto \n
                     4 - Buscar todos os Produtos \n
                     5 - Deletar Produtos \n
                     0 - Sair \n ''')

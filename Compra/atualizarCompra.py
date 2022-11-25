@@ -1,31 +1,15 @@
-from bson.objectid import ObjectId
 import Compra.buscarCompra as buscarCompra
 
 def atualizarCompra (session):
-    minhaColuna = session.Compra
+
     buscarCompra.procurarTodesCompra(session)
 
-    id = input(str('Qual o ID você quer atualizar? '))
-    nomeProduto = input (str('Qual nome do Produto? '))
-    valorProduto = input (str('Qual valor do Produto? '))
-    nomeVendedor = input (str('Qual nome do Vendedor '))
-    emailVendedor = input (str('Qual email do Vendedor? '))
-    nomeUsuario = input (str('Qual nome do Usuario? '))
-    emailUsuario = input (str('Qual email do Usuario? '))
-    meuDicionario = { "$set":{ "produtos": {
-        "nome": nomeProduto,
-        "preco": valorProduto
-    },
-    "vendedor": {
-        "nome": nomeVendedor,
-        "email": emailVendedor
-    },
-    "usuario": {
-        "nome": nomeUsuario,
-        "email": emailUsuario
-    },}}
+    codCompra = input(str('Qual o codigo da compra você quer atualizar? '))
+    
+    novoNomeProd = input (str('Qual nome do Produto? '))
+    novoNomeVend = input (str('Qual nome do Vendedor? '))
+    novoPrecoCompra = input (str('Qual preço da compra? '))
 
-    minhaColuna.update_one({'_id':ObjectId(id)}, meuDicionario)
+    session.execute("update compra set  nomeProd = %s, nomeVend  = %s, precoCompra  =%s where codCompra= %s",[novoNomeProd,novoNomeVend,novoPrecoCompra,codCompra])
 
-    for x in minhaColuna.find():
-        print(x)
+    print('Atualizado com sucesso')
